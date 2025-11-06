@@ -1,7 +1,8 @@
 @startuml
 
-object Startmenu
-object Mainmenu
+object loginmenu
+object Login
+object SignUp
 object User
 object Child
 object Username
@@ -19,28 +20,37 @@ object SearchFunction
 object ReleaseDecade
 object RatingScore
 object MediaName
+object Media
+object ReleaseYear
+object Title
+object MainMenu
+object PlayMedia
 
-Mainmenu --> SearchFunction
-SearchFunction --> Rating
-SearchFunction --> Movie
-SearchFunction --> Series
-SearchFunction --> ReleaseDecade
-Movie --* Genre
-Series --* Genre
+
+loginmenu <-- Login
+loginmenu <-- SignUp
+loginmenu --> User
+SearchFunction <-- RatingScore
+SearchFunction <-- MediaName
+SearchFunction <-- ReleaseDecade
 Series *-- Season
-Movie *-- Rating
-Series *-- Rating
+Media --> Rating
 Season *-- Episode
-Main <-- Startmenu
-Startmenu <-- Mainmenu
-User --> Username
-User --> Password
-User --> Startmenu
-User <|-- Child
-User *-- WatchList
-User --> HasWatched
-HasWatched --> Movie
-HasWatched --> Series
-WatchList *-- Movie
-WatchList *-- Series
+Main -- loginmenu
+User *-- Username
+User *-- Password
+User --> MainMenu
+MainMenu --> SearchFunction
+MainMenu <-- PlayMedia : Method
+User *-- Child
+MainMenu *-- WatchList
+MainMenu *-- HasWatched
+HasWatched *-- Media
+WatchList *-- Media
+Media <|-- Movie
+Media <|-- Series
+Media --> Genre
+SearchFunction <-- Media
+ReleaseYear <-- Media
+Media --> Title
 @enduml

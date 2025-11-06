@@ -1,12 +1,15 @@
 @startuml
 
 class User {
-    String username
-    String password
-    boolean isChild
-    addToWatchList()
-    markAsWatched()
-    removeFromWatchList()
+    - String username
+    - String password
+    - boolean isChild
+    - ArrayList<Media> watchList
+    - ArrayList<Media> watched
+    + void addToWatchList()
+    + boolean markAsWatched()
+    + removeFromWatchList()
+    + getUser()
 }
 
 enum Genre {
@@ -16,8 +19,126 @@ enum Genre {
     FAMILY
     ROMANCE
     SCI-FI
+    COMEDY
+    WESTEREN
+    THRILLER
+    MUSIC
+    ACTION
+    BIOGRAFI
+    WAR
+    HORROR
+    MUSICAL
+    FILM-NOIR
+    SPORT
+    HISTORY
+    ADVENTURE
+    MYSTERY
+    ANIMATION
+    DOCUMENTARY
 }
 
-class
+class LoginMenu{
+
+    String userName
+    String password
+
+    signUp()
+    login()
+
+}
+
+class LoadMedia {
+    - String name
+    - double rating
+    - int releaseYear
+    - int season
+    - int episode
+    - String genre
+    Set readFromMovieFile()
+    Set readFromSeriesFile()
+}
+
+class LoadUser {
+- HashMap<String username, String password> User
+    HashMap readFromFile()
+    void writeToFile()
+}
+
+class TextIO {
+- Scanner scan
++ boolean promptBinary(String msg)
++ String promptText(String msg)
++ int promptNumeric(String msg)
++ void displayMessage(String msg)
+}
+
+class Main {
++ static void main(String[] args)
+}
+
+class MainMenu {
+    + ArrayList viewWatchList()
+    + ArrayList viewWatched()
+    + void playMedia()
+
+}
+
+class SearchFunction {
+    boolean isSeries
+    + void searchByDecade()
+    + void searchByRating()
+    + void searchByGenre()
+    + void searchByName()
+    - void sortFromAToZ()
+    - double sortByTopRating()
+    - double sortByLowRating()
+    - int sortByOldestToNewest()
+    - int sortByNewestToOldest()
+
+    + Set viewAll()
+    - Set viewMovies()
+    - Set viewSeries()
+}
+
+interface Media {
+    - boolean watched
+    # String name
+    # double rating
+    # String genre
+    + void addMedia()
+    + String checkGenre()
+}
+
+class Movie {
+- int releaseYear
+
+}
+
+class Series {
+    - int episodes
+    - int seasons
+    - boolean ongoing
+}
+
+Main --> LoginMenu
+LoginMenu --> User
+
+Genre -* Media
+
+LoadUser --> User
+
+MainMenu <-- User
+MainMenu *-- SearchFunction
+LoadMedia --> Movie
+LoadMedia --> Series
+Movie --|> Media
+Series --|> Media
+
+LoginMenu *--- TextIO
+MainMenu *-- TextIO
+
+MainMenu <-- Movie
+MainMenu <-- Series
+
 
 @enduml
