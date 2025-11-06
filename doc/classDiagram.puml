@@ -1,0 +1,23 @@
+@startuml
+
+class User {
+    String username
+    String password
+    boolean isChild
+    addToWatchList()
+    markAsWatched()
+    removeFromWatchList()
+}
+
+enum Genre {
+    CRIME
+    WAR
+    DRAMA
+    FAMILY
+    ROMANCE
+    SCI-FI
+}
+
+class
+
+@enduml
