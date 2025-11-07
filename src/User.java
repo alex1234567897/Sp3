@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+
+public class User {
+
+    private String username;
+    private String password;
+    private ArrayList<Media> watchlist;
+    private ArrayList<Media> watched;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.watchlist = new ArrayList<>();
+        this.watched = new ArrayList<>();
+    }
+
+    public void addToWatchList(Media media){
+        if(!watchlist.contains(media)){
+            watchlist.add(media);
+            System.out.println(media.getTitle()+ " added to watchlist.");
+        } else {
+            System.out.println(media.getTitle()+" is already in your watchlist.");
+        }
+    }
+    public void removeFromWatchList(Media media){
+        if(watchlist.remove(media)){
+            System.out.println(media.getTitle()+ " removed from watchlist.");
+        } else {
+            System.out.println(media.getTitle() + " not found in your watchlist.");
+        }
+
+    }
+
+   /* public boolean markedAsWatched(Media media){
+        if(watchlist.contains(media)){
+
+        }
+
+    }
+*/
+    // --- getter ---
+    public ArrayList<Media> getWatchlist(){
+        return watchlist;
+    }
+    public ArrayList<Media> getWatched(){
+        return watched;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public String getPassword(){
+        return password;
+    }
+
+}

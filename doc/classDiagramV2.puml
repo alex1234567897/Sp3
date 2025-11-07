@@ -3,10 +3,9 @@
 class User {
     - String username
     - String password
-    - boolean child
     - ArrayList<Media> watchList
     - ArrayList<Media> watched
-    + User(String username, String password, boolean child)
+    + User(String username, String password)
     + void addToWatchList()
     + boolean markAsWatched()
     + removeFromWatchList()
@@ -42,14 +41,15 @@ class LoginMenu{
 
     -String username
     -String password
-    + void signUp(String username, String password, boolean child)
+    + void signUp(String username, String password)
     + void login(String username, String password) = hmap.get(username);
+
 }
 
 class LoadUser {
-    HashMap<String username, String password> UserAccount
-    HashMap readFromFile()
-    void writeToFile()
+    - HashMap<String username, String password> UserAccount
+    + HashMap readFromFile()
+    + void writeToFile()
 }
 
 class TextIO {
@@ -74,15 +74,9 @@ class MainMenu {
 }
 
 class SearchFunction {
-    + //void searchByDecade()
-    + //void searchByRating()
+    boolean isSeries
     + void searchByGenre()
     + void searchByName()
-    - //void sortFromAToZ()
-    - //double sortByTopRating()
-    - //double sortByLowRating()
-    - //int sortByOldestToNewest()
-    - //int sortByNewestToOldest()
 
     + Set viewAll()
     - Set viewMovies()
@@ -92,11 +86,9 @@ class SearchFunction {
 class LoadMedia {
     - List<Movie> movies
     - List<Series> series
-    + void loadMovies(String file)
-    + void loadSeries(String file)
-    + List<Movie> getMovies()
-    + List<series> getSeries()
-    + List<Media getAllMedia()
+
+    + void loadMovies()
+    + void loadSeries()
 }
 
 abstract class Media {
@@ -106,9 +98,6 @@ abstract class Media {
     + String getTitle()
     + double getRating()
     + Set<Genre> getGenre()
-    - boolean watched
-    + void addMedia()
-    + String checkGenre()
 }
 
 class Movie extends Media{
@@ -151,6 +140,5 @@ MainMenu <-- Movie
 MainMenu <-- Series
 
 Series <-- Season
-
 
 @enduml
