@@ -10,6 +10,19 @@ public class LoginMenu {
     private String username;
     private String password;
 
+    /**
+     * Metoden spørg om du ville login eller signUp.
+     * hvis du svar Y så vil du login, hvis N så laver du en account.
+     */
+
+    public void signMethod(){
+
+        if(Ui.promptText("Do you want to login or signup?").equals("login")){
+            login();
+        } else {
+            signUp();
+        }
+    }
 
     /**
      * Metoden spørg om username og password.
@@ -29,6 +42,7 @@ public class LoginMenu {
 
         accounts.put(username, password);
         loadUser.writeToFile(accounts);
+        Ui.displayMsg("You have succesfully created an account.");
 
     }
 

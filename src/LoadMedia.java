@@ -37,19 +37,11 @@ public class LoadMedia {
         return movies;
     }
     public ArrayList<Series> loadSeries() {
-        ArrayList<String> lines = fileIO.readData(path);
+        ArrayList<String> lines = fileIO.readMedia("Data/Serier.csv");
         ArrayList<Series> series = new ArrayList<>();
 
 
-
-
-
-
-
-
-
-
-
+        return series;
     }
 
     /**

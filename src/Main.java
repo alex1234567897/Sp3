@@ -13,9 +13,16 @@ public class Main {
             System.out.println(m);
         }
 
+        ArrayList<Series> series = loader.loadSeries("Data/Serier.csv");
+
+
+        for (Series m : series) {
+            System.out.println(m);
+        }
+
 
         LoginMenu user = new LoginMenu();
-        user.login();
+        user.signMethod();
 
     }
 }

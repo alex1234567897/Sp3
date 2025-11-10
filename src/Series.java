@@ -23,14 +23,13 @@ public class Series extends Media {
         // putter antal episoder ind fra episode arraylisten til de korrekte sæsonner
         for (int i = 0; i < seasons; i++) {
             seasonAndEpisodes.put(i + 1, episodes.get(i));
-            System.out.println(seasonAndEpisodes.get(i+1));
+            System.out.println(seasonAndEpisodes);
         }
         return seasonAndEpisodes;
     }
 
     public String toString() {
-        makeSeasonsInSeries();
         return "Title: " + getTitle() + ", onGoing: " + onGoing + ", rating: " +
-                getRating() + ", genre: " + genres + makeSeasonsInSeries();
+                getRating() + ", genre: " + genres + "Season and episode: "+makeSeasonsInSeries();
     }
 }
