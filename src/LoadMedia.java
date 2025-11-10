@@ -36,10 +36,32 @@ public class LoadMedia {
         }
         return movies;
     }
-    public ArrayList<Series> loadSeries() {
-        ArrayList<String> lines = fileIO.readMedia("Data/Serier.csv");
+    public ArrayList<Series> loadSeries(String path) {
+        ArrayList<String> lines = fileIO.readMedia(path);
         ArrayList<Series> series = new ArrayList<>();
 
+        boolean onGoing;
+
+        for (String line : lines) {
+            if (line.endsWith(";")) {
+                line = line.substring(0, line.length() - 1);
+            }
+
+            String[] parts = line.split(";");
+            if (parts.length < 4) {
+                System.out.println("ignore line. not enough fields:" + line);
+                continue;
+            }
+
+            String title = parts[0].trim();
+            String releaseYear = parts[1].trim();
+            ArrayList<String> genres = parseGenres(parts[2]);
+            double rating = parseDoubleComma(parts[3].trim());
+            String seasons = parts[4].trim();
+
+            Series serie = new Series(title, releaseYear, genres, rating, seasons);
+            series.add(serie);
+        }
 
         return series;
     }

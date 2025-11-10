@@ -78,9 +78,9 @@ class SearchFunction {
     + void searchByGenre()
     + void searchByName()
 
-    + Set viewAll()
-    - Set viewMovies()
-    - Set viewSeries()
+    + void viewAll()
+    - void viewMovies()
+    - void viewSeries()
 }
 
 class LoadMedia {

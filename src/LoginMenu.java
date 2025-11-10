@@ -16,11 +16,14 @@ public class LoginMenu {
      */
 
     public void signMethod(){
-
-        if(Ui.promptText("Do you want to login or signup?").equals("login")){
+        String choice = Ui.promptText("Do you want to login or signup?");
+        if(choice.equals("login")){
             login();
-        } else {
+        } else if(choice.equals("signup")){
             signUp();
+        } else {
+            Ui.displayMsg("Invalid input, Try again.");
+            signMethod();
         }
     }
 
