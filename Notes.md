@@ -80,9 +80,9 @@ Enter title:
 0) Return <-
 
 === Choose Genre === (Type 2)
-1) Genre 1 || 2) Genre 2 || 3) Genre 3 || 4) Genre || 5) Gerne 5 || 6) genre  ||, 7) Genre 7
-1) Genre 1 || 2) Genre 2 || 3) Genre 3 || 4) Genre || 5) Gerne 5 || 6) genre  ||, 7) Genre 7
-1) Genre 1 || 2) Genre 2 || 3) Genre 3 || 4) Genre || 5) Gerne 5 || 6) genre  ||, 7) Genre 7
+1) Action || 2) Adventure || 3) Animation || 4) Biography || 5) Comedy || 6) Crime ||, 7) Documentary
+8) Drama || 9) Family || 10) Fantasy || 11) History || 12) Horror || 13) Mystery  ||, 14) Music
+15) Musical || 16) Romance || 17) Sci_fi || 18) Sport || 19) Thriller || 20) War  ||, 21) Western
 
 
 === Choose Genre === (Type 3)

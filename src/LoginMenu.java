@@ -1,6 +1,5 @@
 import Util.TextUI;
 import java.util.HashMap;
-import static java.lang.System.exit;
 
 public class LoginMenu {
 
@@ -16,13 +15,16 @@ public class LoginMenu {
      */
 
     public void signMethod(){
-        String choice = Ui.promptText("Do you want to: \n1: Login\n2: Signup\n 0: Exit");
-        if(choice.equalsIgnoreCase("1")){
+        String choice = Ui.promptText("Do you want to: \n1: Login\n2: Signup\n0: Exit");
+        if(choice.equals("1")){
             login();
-        } else if(choice.equalsIgnoreCase("2")) {
+        } else if(choice.equals("2")) {
             signUp();
-        }else if (choice.equalsIgnoreCase("0")){
-            exit(0);
+        }else if (choice.equals("0")){
+            int c = 1;
+            c = 0;
+            Ui.displayMsg("closing service.");
+            System.exit(c);
         } else {
             Ui.displayMsg("Invalid input, Try again.");
             signMethod();

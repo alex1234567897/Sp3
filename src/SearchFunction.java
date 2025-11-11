@@ -1,5 +1,6 @@
 import Util.TextUI;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class SearchFunction {
@@ -9,7 +10,81 @@ public class SearchFunction {
     ArrayList<Movie> movies = loader.loadMovies("Data/Film.csv");
 
     public void searchByGenre() {
-        String input = Ui.promptText("Enter genre of movies or serie: ");
+        String input = " ";
+        int choice = Ui.promptNumeric("=== Choose Genre ==="+
+                "\n1) Action || 2) Adventure || 3) Animation || 4) Biography || 5) Comedy || 6) Crime ||, 7) Documentary"+
+                "\n8) Drama || 9) Family || 10) Fantasy || 11) History || 12) Horror || 13) Mystery  ||, 14) Music"+
+                "\n15) Musical || 16) Romance || 17) Sci_fi || 18) Sport || 19) Thriller || 20) War  ||, 21) Western");
+
+            switch(choice){
+                case 1:
+                    input = "Action";
+                    break;
+                case 2:
+                    input = "Adventure";
+                    break;
+                case 3:
+                    input = "Animation";
+                    break;
+                case 4:
+                    input = "Biography";
+                    break;
+                case 5:
+                    input = "Comedy";
+                    break;
+                case 6:
+                    input = "Crime";
+                    break;
+                case 7:
+                    input = "Documentary";
+                    break;
+                case 8:
+                    input = "Drama";
+                    break;
+                case 9:
+                    input = "Family";
+                    break;
+                case 10:
+                    input = "Fantasy";
+                    break;
+                case 11:
+                    input = "History";
+                    break;
+                case 12:
+                    input = "Horror";
+                    break;
+                case 13:
+                    input = "Mystery";
+                    break;
+                case 14:
+                    input = "Music";
+                    break;
+                case 15:
+                    input = "Musical";
+                    break;
+                case 16:
+                    input = "Romance";
+                    break;
+                case 17:
+                    input = "Sci-fi";
+                    break;
+                case 18:
+                    input = "Sport";
+                    break;
+                case 19:
+                    input = "Thriller";
+                    break;
+                case 20:
+                    input = "War";
+                    break;
+                case 21:
+                    input = "Western";
+                    break;
+                case 22:
+                    input = "Film-Noir";
+                default:
+            }
+
         boolean found = false;
         for (Movie m : movies) {
             for(String g: m.genres) {
@@ -97,11 +172,7 @@ public class SearchFunction {
                     for (Movie m : movies) {
                         System.out.println(m.title);
                     }
-
                 }
-
-
             }
         }
     }
-
