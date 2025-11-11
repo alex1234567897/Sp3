@@ -52,7 +52,7 @@ public class SearchFunction {
         }
         for (Series s : series) {
             if (s.title.toLowerCase().contains(inputName.toLowerCase())) {
-                System.out.println(s.title + "| Genre: " + s.genres);
+                System.out.println(s.title);
                 found = true;
             }
         }

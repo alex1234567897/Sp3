@@ -1,6 +1,6 @@
 import Util.TextUI;
-
 import java.util.HashMap;
+import static java.lang.System.exit;
 
 public class LoginMenu {
 
@@ -16,11 +16,13 @@ public class LoginMenu {
      */
 
     public void signMethod(){
-        String choice = Ui.promptText("Do you want to login or signup?");
-        if(choice.equals("login")){
+        String choice = Ui.promptText("Do you want to: \n1: Login\n2: Signup\n 0: Exit");
+        if(choice.equalsIgnoreCase("1")){
             login();
-        } else if(choice.equals("signup")){
+        } else if(choice.equalsIgnoreCase("2")) {
             signUp();
+        }else if (choice.equalsIgnoreCase("0")){
+            exit(0);
         } else {
             Ui.displayMsg("Invalid input, Try again.");
             signMethod();
@@ -40,7 +42,7 @@ public class LoginMenu {
 
         if(accounts.containsKey(username)){
             Ui.displayMsg("Username already in use! Please try agian.");
-            return;
+            signUp();
         }
 
         accounts.put(username, password);
@@ -63,13 +65,13 @@ public class LoginMenu {
 
         if(!accounts.containsKey(username)){
             Ui.displayMsg("No account with "+username+" found, try again.");
-            return null;
+            signUp();
         }
 
         String savedPassword = accounts.get(username);
         if(!savedPassword.equals(password)){
             Ui.displayMsg("Incorrect password");
-            return null;
+            signUp();
         }
 
         Ui.displayMsg("login successfull, Welcome "+ username+".");

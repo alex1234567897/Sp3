@@ -47,25 +47,6 @@ public class FileIO {
         return data;
     }
 
-    public String[] readData(String path, int length){
-        String[] data = new String [length];
-        File file = new File(path);
-
-        try {
-            Scanner scan = new Scanner(file);
-            scan.nextLine();
-
-            for(int i = 0; i < data.length; i++){
-                String line = scan.nextLine();
-                data[i] = line;
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-        }
-        return data;
-    }
-
     public ArrayList<String> readMedia(String path) {
         ArrayList<String> data = new ArrayList<>();
         File file = new File(path);

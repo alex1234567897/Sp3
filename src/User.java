@@ -18,26 +18,20 @@ public class User {
         if(!watchlist.contains(media)){
             watchlist.add(media);
             System.out.println(media.getTitle()+ " added to watchlist.");
-        } else {
-            System.out.println(media.getTitle()+" is already in your watchlist.");
+            return;
         }
+        System.out.println(media.getTitle()+" is already in your watchlist.");
     }
+
     public void removeFromWatchList(Media media){
-        if(watchlist.remove(media)){
-            System.out.println(media.getTitle()+ " removed from watchlist.");
-        } else {
-            System.out.println(media.getTitle() + " not found in your watchlist.");
-        }
-
+        watchlist.remove(media);
     }
 
-   /* public boolean markedAsWatched(Media media){
-        if(watchlist.contains(media)){
-
-        }
-
+   public void markedAsWatched(Media media){
+        if(watchlist.contains(media)) watchlist.remove(media);
+        watched.add(media);
     }
-*/
+
     // --- getter ---
     public ArrayList<Media> getWatchlist(){
         return watchlist;
