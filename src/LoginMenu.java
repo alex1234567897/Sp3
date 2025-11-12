@@ -46,7 +46,7 @@ public class LoginMenu {
 
         if(usernameExists(accounts, username)) {
             Ui.displayMsg("Username already in use! Please try agian.");
-            signUp();
+            signMethod();
             return;
         }
 
@@ -71,7 +71,7 @@ public class LoginMenu {
         int id = findUserIndex(accounts, username);
         if (id == -1) {
             Ui.displayMsg("No account with "+username+" found, try again.");
-            signUp();
+            signMethod();
             return null;
         }
 

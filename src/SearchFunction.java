@@ -9,6 +9,7 @@ public class SearchFunction {
     ArrayList<Series> series = loader.loadSeries("Data/Serier.csv");
     ArrayList<Movie> movies = loader.loadMovies("Data/Film.csv");
     ArrayList<Media> allMedia = loader.allMedia("Data/Film.csv", "Data/Serier.csv");
+    int up = 0;
 
     public void searchByGenre() {
         String input = " ";
@@ -93,7 +94,8 @@ public class SearchFunction {
         for (Movie m : movies) {
             for (String g : m.genres) {
                 if (input.equalsIgnoreCase(g)) {
-                    System.out.println(m.title);
+                    up++;
+                    System.out.println(up+") " + m.title+ " | Genre: "+ m.genres);
                     found = true;
                     break;
                 }
@@ -104,7 +106,8 @@ public class SearchFunction {
         for (Series s : series) {
             for (String g : s.genres) {
                 if (input.equalsIgnoreCase(g)) {
-                    System.out.println(s.title);
+                    up++;
+                    System.out.println(up +") "+s.title+" | Genre: "+ s.genres);
                     found = true;
                     break;
 
@@ -160,25 +163,28 @@ public class SearchFunction {
 
                 Ui.displayMsg("Movies");
                 for (Movie m : movies) {
-                    System.out.println(m.title);
-                }
+                    up++;
+                    System.out.println(up+") "+m.title+ "\n     Genre: "+m.genres+ " | Rating: "+m.rating+"\n");                }
 
                 Ui.displayMsg("Series");
                 for (Series s : series) {
-                    System.out.println(s.title);
+                    up++;
+                    System.out.println(up+") "+s.title+ "\n     Genre: "+s.genres+ " | Rating: "+s.rating+"\n");
                 }
             } else {
                 if (Ui.promptNumeric("Do you want see a: \n1) series \n2) movie?") == 1) {
                     ArrayList<Series> series = loader.loadSeries("Data/Serier.csv");
 
                     for (Series s : series) {
-                        System.out.println(s.title);
+                        up++;
+                        System.out.println(up+") "+s.title+ "\n    Genre: "+s.genres+ " | Rating: "+s.rating+"\n");
                     }
                 } else {
                     ArrayList<Movie> movies = loader.loadMovies("Data/Film.csv");
 
                     for (Movie m : movies) {
-                        System.out.println(m.title);
+                        up++;
+                        System.out.println(up+") "+m.title+ "\n    Genre: "+m.genres+ " | Rating: "+m.rating+"\n");
                     }
                 }
             }

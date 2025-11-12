@@ -9,9 +9,7 @@ public class Main {
         LoginMenu user = new LoginMenu();
         user.signMethod();
         Menu.displayMenu();
-
         Menu.playMedia();
-
 
     }
 }
