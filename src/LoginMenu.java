@@ -1,4 +1,6 @@
 import Util.TextUI;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginMenu {
@@ -40,14 +42,15 @@ public class LoginMenu {
         username = Ui.promptText("Enter a username: ");
         password = Ui.promptText("Enter a password: ");
 
-        HashMap<String, String> accounts = loadUser.readFromFile();
+        ArrayList<String[]> accounts = loadUser.readFromFile();
 
-        if(accounts.containsKey(username)){
+        if(usernameExists(accounts, username)) {
             Ui.displayMsg("Username already in use! Please try agian.");
             signUp();
+            return;
         }
 
-        accounts.put(username, password);
+        accounts.add(new String[] { username, password });
         loadUser.writeToFile(accounts);
         Ui.displayMsg("You have succesfully created an account.");
 
@@ -63,22 +66,38 @@ public class LoginMenu {
         username = Ui.promptText("Enter a username: ");
         password = Ui.promptText("Enter a password: ");
 
-        HashMap<String, String> accounts = loadUser.readFromFile();
+        ArrayList<String[]> accounts = loadUser.readFromFile();
 
-        if(!accounts.containsKey(username)){
+        int id = findUserIndex(accounts, username);
+        if (id == -1) {
             Ui.displayMsg("No account with "+username+" found, try again.");
             signUp();
+            return null;
         }
 
-        String savedPassword = accounts.get(username);
-        if(!savedPassword.equals(password)){
-            Ui.displayMsg("Incorrect password");
-            signUp();
+        String[] s = accounts.get(id);
+        String savedPassword = s[1];
+
+        if (!savedPassword.equals(password)) {
+            Ui.displayMsg("Incorrect password!");
+            return null;
         }
 
         Ui.displayMsg("login successfull, Welcome "+ username+".");
         return new User(username, password);
-
     }
 
+    private int findUserIndex(ArrayList<String[]> accounts, String user) {
+        for (int i = 0; i < accounts.size(); i++) {
+            String[] s = accounts.get(i);
+            if (s.length >= 2 && s[0].equals(user)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private boolean usernameExists(ArrayList<String[]> accounts, String user) {
+        return findUserIndex(accounts, user) != -1;
+    }
 }

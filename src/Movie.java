@@ -23,6 +23,9 @@ public class Movie extends Media {
     public int getReleaseYear() {
         return releaseYear;
     }
+    public String getTitle() {
+        return title;
+    }
      public String toString() {
         return "Title: " + getTitle() + ", releaseYear: " + releaseYear + ", rating: " + getRating() + ", genre: " + genres;
     }

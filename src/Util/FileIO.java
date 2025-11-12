@@ -25,8 +25,8 @@ public class FileIO {
         }
     }
 
-    public HashMap<String, String> readData(String path) {
-        HashMap<String, String> data = new HashMap<>();
+    public ArrayList<String[]> readData(String path) {
+        ArrayList<String[]> data = new ArrayList();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -38,7 +38,9 @@ public class FileIO {
                 if(parts.length == 2){
                     String username = parts[0].trim();
                     String password = parts[1].trim();
-                data.put(username, password);
+
+                    String[] userData = {username, password};
+                    data.add(userData);
                 }
             }
         } catch (FileNotFoundException e) {

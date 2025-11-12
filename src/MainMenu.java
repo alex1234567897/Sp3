@@ -8,8 +8,8 @@ public class MainMenu {
     SearchFunction searchFunction = new SearchFunction();
     User user;
     LoadMedia loader = new LoadMedia();
-    ArrayList<Series> series = loader.loadSeries("Data/Serier.csv");
-    ArrayList<Movie> movies = loader.loadMovies("Data/Film.csv");
+    ArrayList<Media> allMedia = loader.allMedia("Data/Film.csv", "Data/Serier.csv");
+    private Media theChosenMedia;
 
     public void displayMenu() {
 
@@ -40,9 +40,6 @@ public class MainMenu {
             default:
                 return;
         }
-
-
-
     }
 
     public void searchMenu() {
@@ -61,7 +58,6 @@ public class MainMenu {
                 displayMenu();
                 break;
         }
-
     }
 
     public void playMedia() {
@@ -69,18 +65,32 @@ public class MainMenu {
                 "\n1) Play media" +
                 "\n2)Add to watchlist" +
                 "\n0) Return <-");
+/* Hvis vi ikke vil have et input fra brugeren skal vi sørge for at searchfunction returnerer et medie
+playMedia() går igennem all medie og tjekker om titlen passer til brugererns input, og derefter kan den play
+eller gemme i watchlist.
+ */
 
-        switch (choice) {
-            case 1:
-                Ui.displayMsg(m.title + " now playing...");
-                user.markedAsWatched();
-                break;
-            case 2:
-                user.addToWatchList(media);
-                break;
-            case 0:
-                return;
-                break;
+        String input = Ui.promptText("Which movie do you want to watch/add to watchList?");
+
+        for (Media m : allMedia) {
+            if (m.title.equals(input)) {
+                theChosenMedia = m;
+            } else {
+                System.out.println("Dette medie findes ikke, prøv igen");
+                playMedia();
+            }
         }
+            switch (choice) {
+                case 1:
+                    Ui.displayMsg(theChosenMedia.title + " now playing...");
+                    user.markedAsWatched(theChosenMedia);
+                    break;
+                case 2:
+                    user.addToWatchList(theChosenMedia);
+                    break;
+                case 0:
+                    searchMenu();
+                    break;
+            }
     }
 }

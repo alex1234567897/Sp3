@@ -114,4 +114,15 @@ public class LoadMedia {
         }
         return result;
     }
+
+    public ArrayList<Media> allMedia(String moviePath, String seriesPath) {
+        ArrayList<Media> result = new ArrayList<>();
+
+        ArrayList<Movie> movies = loadMovies(moviePath);
+        ArrayList<Series> series = loadSeries(seriesPath);
+
+        result.addAll(movies);
+        result.addAll(series);
+        return result;
+    }
 }

@@ -10,6 +10,8 @@ public class Main {
         user.signMethod();
         Menu.displayMenu();
 
+        Menu.playMedia();
+
 
     }
 }

@@ -45,6 +45,12 @@ import java.util.Scanner;
 
             return input;
         }
+        public String promptTextX(String msg){
+            displayMsg(msg);         //Stille brugeren et spørgsmål
+            String input = sc.nextLine();          //Give brugere et sted at placere sit svar og vente på svaret
+
+            return input;
+        }
 
         public boolean promptBinary(String msg){
             displayMsg(msg);
