@@ -4,26 +4,25 @@ public class User {
 
     private String username;
     private String password;
-    private ArrayList<Media> watchlist;
+    private ArrayList<String> watchlist;
     private ArrayList<Media> watched;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.watchlist = new ArrayList<>();
+        this.watchlist = new ArrayList<String>();
         this.watched = new ArrayList<>();
     }
 
-    public void addToWatchList(Media media){
+    public void addToWatchList(String media){
         if(!watchlist.contains(media)){
             watchlist.add(media);
-            System.out.println(media.getTitle()+ " added to watchlist.");
             return;
         }
-        System.out.println(media.getTitle()+" is already in your watchlist.");
+        System.out.println(media+" is already in your watchlist.");
     }
 
-    public void removeFromWatchList(Media media){
+    public void removeFromWatchList(String media){
         watchlist.remove(media);
     }
 
@@ -33,7 +32,7 @@ public class User {
     }
 
     // --- getter ---
-    public ArrayList<Media> getWatchlist(){
+    public ArrayList<String> getWatchlist(){
         return watchlist;
     }
     public ArrayList<Media> getWatched(){
